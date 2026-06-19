@@ -1,0 +1,427 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 18, 2026 at 03:07 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `hr_system`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company_settings`
+--
+
+CREATE TABLE `company_settings` (
+  `id` int(11) NOT NULL DEFAULT 1,
+  `company_name` varchar(255) DEFAULT NULL,
+  `company_name_ar` varchar(255) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `trn` varchar(100) DEFAULT NULL,
+  `trade_license` varchar(100) DEFAULT NULL,
+  `default_language` varchar(20) DEFAULT 'ar',
+  `currency` varchar(20) DEFAULT 'AED',
+  `timezone` varchar(100) DEFAULT 'Asia/Dubai',
+  `expiry_alert_days` int(11) DEFAULT 30,
+  `logo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `company_settings`
+--
+
+INSERT INTO `company_settings` (`id`, `company_name`, `company_name_ar`, `phone`, `email`, `website`, `address`, `trn`, `trade_license`, `default_language`, `currency`, `timezone`, `expiry_alert_days`, `logo`) VALUES
+(1, 'AL WATAD', 'الوتد', '', 'info@abgc.me', '', '', '', '', 'ar', 'AED', 'Asia/Dubai', 30, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `id` int(11) NOT NULL,
+  `s_no` int(11) DEFAULT NULL,
+  `passport_no` varchar(100) DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_ar` varchar(255) DEFAULT NULL,
+  `emp_id` varchar(50) DEFAULT NULL,
+  `permit_type` varchar(255) DEFAULT NULL,
+  `job_title_en` varchar(255) DEFAULT NULL,
+  `job_title_ar` varchar(255) DEFAULT NULL,
+  `nationality` varchar(100) DEFAULT NULL,
+  `expiry_date` varchar(50) DEFAULT NULL,
+  `contract_type` varchar(100) DEFAULT NULL,
+  `labour_card_no` varchar(100) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `company_code` varchar(100) DEFAULT NULL,
+  `phone_number` varchar(100) DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  `marital_status` varchar(50) DEFAULT NULL,
+  `date_of_birth` varchar(50) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `visa_emirate` varchar(100) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `member_type` varchar(100) DEFAULT NULL,
+  `gross_salary` decimal(10,2) DEFAULT NULL,
+  `emirates_id_number` varchar(100) DEFAULT NULL,
+  `resident_file_number` varchar(100) DEFAULT NULL,
+  `contract_pdf` text DEFAULT NULL,
+  `offer_letter_pdf` text DEFAULT NULL,
+  `passport_pdf` text DEFAULT NULL,
+  `resident_file_pdf` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `photo` varchar(255) DEFAULT NULL,
+  `passport_expiry` varchar(50) DEFAULT NULL,
+  `visa_expiry` varchar(50) DEFAULT NULL,
+  `emirates_id_expiry` varchar(50) DEFAULT NULL,
+  `labour_card_expiry` varchar(50) DEFAULT NULL,
+  `employee_status` varchar(50) DEFAULT 'active',
+  `leaving_date` varchar(50) DEFAULT NULL,
+  `leaving_reason` text DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `s_no`, `passport_no`, `name_en`, `name_ar`, `emp_id`, `permit_type`, `job_title_en`, `job_title_ar`, `nationality`, `expiry_date`, `contract_type`, `labour_card_no`, `company_name`, `company_code`, `phone_number`, `gender`, `marital_status`, `date_of_birth`, `age`, `visa_emirate`, `category`, `member_type`, `gross_salary`, `emirates_id_number`, `resident_file_number`, `contract_pdf`, `offer_letter_pdf`, `passport_pdf`, `resident_file_pdf`, `created_at`, `updated_at`, `photo`, `passport_expiry`, `visa_expiry`, `emirates_id_expiry`, `labour_card_expiry`, `employee_status`, `leaving_date`, `leaving_reason`, `deleted_at`) VALUES
+(2, 0, 'AA0146122', 'MOZA KHAMIS OBAID ALKAABI', 'موزه خميس عبيد الكعبي', '-', 'NATIONAL AND GCC ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EMIRATES', '02-02-2028', 'Limited', '2.12E+12', '', 'اﻟﻮﺗﺪ', '', 'Famale', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(3, 0, 'A35462210', 'OSAMA ALI ELSAYED FARAGALLAH', 'اسامه على السيد فرج الله', '103', 'NEW ELECTRONIC WORK PERMIT', 'Accountant', 'محاسب', 'EGYPT', '03-08-2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '9.72E+11', 'Male', 'Single', '04/01/1997', 29, 'Dubai', 'Category A', 'HSB', 7000.00, '784-1997-9385176-9', '201/2024/2018186', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(4, 0, 'A41840674', 'ABDELLAH OSSAMA ABOUELNOUR ABDELLAH', 'عبد اللاه اسامه ابوالنور عبد اللاه', '70', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '17/09/2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '04/01/2003', 23, 'Dubai', 'Category A', 'LSB', 1500.00, '784-2003-2069292-2', '202/2025/2675764', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(5, 4, 'A38698850', 'ALI ELSAYED AHMED MOURSI', 'على السيد احمد مرسي', '-', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '14/09/2027', 'Limited', '1.17E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(6, 5, 'A37907584', 'ELAMIR ZENIHOM IBRAHIM ELSAYED ELMITWALLI', 'الامير زنيهم ابراهيم السيد المتولي', '30', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '18/09/2026', 'Limited', '1.15E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '15/09/1995', 31, 'Dubai', 'Category A', 'LSB', 1800.00, '784-1995-3554172-8', '202/2024/2359918', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(7, 6, 'A41417426', 'HASSAN ABDELWAHAB ABOUELFTOUH ABDELWAHAB', 'حسن عبدالوهاب ابوالفتوح عبدالوهاب', '73', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '17/09/2027', 'Limited', '1.12E+11', '', 'اﻟﻮﺗﺪ', '1146516202', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(8, 7, 'A39656622', 'IBRAHIM ABDELHAKIM ABOUELMAGD ISMAIEL', 'ابراهيم عبدالحكيم ابوالمجد اسماعيل', '69', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '17/09/2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '12/01/2003', 23, 'Dubai', 'Category A', 'LSB', 1500.00, '784-2003-3742053-1', '202/2025/2676205', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(9, 8, 'A37927519', 'MOHAMED SALMAN SALEM ABDRABOU', 'محمد سالمان سالم عبدربه', '-', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '14/07/2026', 'Limited', '1.25E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(10, 9, 'A42144579', 'MOSTAFA SHOKRY SAAD SALAMA', 'مصطفى شكرى سعد سلامه', '64', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '17/09/2027', 'Limited', '1.21E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '21/03/1987', 39, 'Dubai', 'Category A', 'LSB', 1500.00, '784-1987-5712998-0', '202/2025/2676008', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(11, 10, 'A30745035', 'MOHAMED KHALED ABDELBARY HASSAN', 'محمد خالد عبدالبارى حسن', '105', 'NEW ELECTRONIC WORK PERMIT', 'Civil Engineer', 'مهندس مدني', 'EGYPT', '31/10/2026', 'Limited', '1.07E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '549986359', 'Male', 'Single', '11/07/1996', 30, 'Dubai', 'Category A', 'HSB', 6000.00, '784-1996-4438753-4', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(12, 11, 'A42677475', 'ATTIA SHAABAN ATTIA HEGAZI', 'عطيه شعبان عطيه حجازي', '66', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '24/09/2027', 'Limited', '1.07E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '01/07/2001', 25, 'Dubai', 'Category A', 'LSB', 2000.00, '784-2001-5950931-2', '202/2025/2700639', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(13, 12, 'A29626982', 'FAWZY GAMAL MOHAMED SOLIMAN', 'فوزى جمال محمد سليمان', '26', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '06-10-2026', 'Limited', '1.16E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '563285971', 'Male', 'Single', '16/11/1989', 37, 'Dubai', 'Category A', 'LSB', 1650.00, '784-1989-2349413-6', '202/2024/2353423', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(14, 13, 'A38820347', 'IBRAHIM BAHAA ABDELHAKIM ELMOGHAZI', 'ابراهيم بهاء عبدالحكيم المغازى', '67', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '26/09/2027', 'Limited', '1.04E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(15, 14, 'A29543637', 'MAHMOUD ALI ELBADRY HASSANE', 'محمود على البدرى حسان', '68', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '30/09/2027', 'Limited', '1.25E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '508983168', 'Male', 'Single', '25/12/1990', 35, 'Dubai', 'Category A', 'LSB', 1500.00, '784-1990-4591311-0', '202/2025/2723580', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(16, 15, 'A41489139', 'MOHAMED YASSER MOHAMED HODHOD', 'محمد ياسر محمد هدهد', '65', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '20/09/2027', 'Limited', '1.04E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '1031756674', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(17, 16, 'A40684227', 'RAFAAT ALY MOHAMED MAHMOUD MAREY', 'رأفت على محمد محمود مرعي', '111', 'NEW ELECTRONIC WORK PERMIT', 'Legal Advisor', 'استشاري قانوني', 'EGYPT', '14/09/2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '01/01/2000', 26, 'Dubai', 'Category A', 'LSB', 4000.00, '784-2000-3040570-6', '203/2025/2091186', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(18, 17, 'A40861872', 'AYAD FAKHRY TEMSAH OKAL', 'عياد فخرى تمساح عوكل', '41', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '29/03/2027', 'Limited', '1.12E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(19, 18, 'A40344702', 'ESSAM KHALED ABDELBARY HASSAN ELSAYED', 'عصام خالد عبدالبارى حسن السيد', '43', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '15/04/2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '05/01/2002', 24, 'Dubai', 'Category A', 'LSB', 2300.00, '784-2002-6131070-8', '201/2025/2673411', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(20, 19, 'A42227448', 'HANI GAMAL HAMED ELSAYED', 'هانى جمال حامد السيد', '57', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '14/09/2027', 'Limited', '1.10E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '1095413463', 'Male', 'Single', '08/10/1983', 43, 'Dubai', 'Category A', 'LSB', 4000.00, '784-1983-4214941-0', '202/2025/2714290', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(21, 20, 'A39791629', 'MOHAMED AHMED MOHAMED ABDELHAMID', 'محمد احمد محمد عبد الحميد', '53', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '18/08/2027', 'Limited', '1.30E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '30/11/1974', 52, 'Dubai', 'Category A', 'LSB', 2800.00, '784-1974-2214764-1', '202/2025/2466930', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(22, 21, 'A35210201', 'AHMED RAGAB HELMY NOFAL', 'احمد رجب حلى نوفل', '15', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '20/03/2026', 'Limited', '1.15E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '15/08/1985', 41, 'Dubai', 'Category A', 'LSB', 2100.00, '784-1985-5408910-6', '201/2024/2385706', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(23, 22, 'A38998030', 'ISMAIL KORANY ISMAIL HUSSEIN', 'اسماعيل قرنى اسماعيل حسين', '52', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '18/08/2027', 'Limited', '1.02E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '1210929593', 'Male', 'Single', '11/02/1980', 46, 'Dubai', 'Category A', 'LSB', 2800.00, '784-1980-9162607-1', '202/2025/2492988', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(24, 23, 'A37053654', 'MAHMOUD HAMDY ALY KHALIL', 'محمود حمدى على خليل', '19', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '20/03/2026', 'Limited', '1.18E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '18/07/1979', 47, 'Dubai', 'Category A', 'HSB', 4500.00, '784-1979-1765089-3', '201/2024/2402248', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(25, 24, 'A41952082', 'MOHAMED ABDELSABOUR ALI ABDELFATTAH', 'محمد عبدالصبور على عبدالفتاح', '51', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '18/08/2027', 'Limited', '1.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '06/01/1993', 33, 'Dubai', 'Category A', 'LSB', 2800.00, '784-1993-1018071-8', '202/2025/2492955', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(26, 25, 'P8574442', 'MOHAMMAD DILWAR HUSAIN MOHAMMAD ISLAM', 'محمد ديلوار حسين محمد إسلام', '46', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '24/06/2027', 'Limited', '1.00E+13', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(27, 26, 'A33769090', 'MOSTAFA RAGAB ABDELAZIM IBRAHIM', 'مصطفى رجب عبد العظيم ابراهيم', '9', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '08-05-2026', 'Limited', '1.13E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '13/10/1979', 47, 'Dubai', 'Category A', 'LSB', 3500.00, '784-1979-9681223-2', '202/2024/2641730', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(28, 27, 'R3652699', 'VIKASH KUMAR JHA SUBODH JHA', 'فيكاش كومار جا سوبوده جا', '45', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '24/06/2027', 'Limited', '1.00E+13', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(29, 28, 'A25797948', 'YOUSSEF MAHMOUD HUSSEIN AHMED', 'يوسف محمود حسين احمد', '20', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '03-05-2026', 'Limited', '1.05E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '04/05/1983', 43, 'Dubai', 'Category A', 'LSB', 3700.00, '784-1983-9193028-0', '201/2024/2392859', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(30, 29, 'N015490117', 'ZIAD ABDULKARIM SHREDEH', 'زياد عبد الكريم شريده', '2', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'SYRIA', '24/05/2026', 'Limited', '4.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '05/01/1998', 28, 'Dubai', 'Category A', 'HSB', 4500.00, '784-1998-4264374-6', '201/2024/2738737', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(31, 30, 'P6873702B', 'ANDRES JR MARCELO ALCESTO', 'اندريس جر مارسيلو السيستو', '49', 'NEW ELECTRONIC WORK PERMIT', 'Welder', 'لحام', 'PHILIPPINES', '24/09/2027', 'Limited', '3.04E+13', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3200.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(32, 31, 'A04554185', 'AHMED MOHAMED MOUSTAFA MOHAMED HAMADA', 'احمد محمد مصطفى محمد حماده', '88', 'PRE APPROVAL FOR WORK PERMIT', 'Carpenter', 'نجار', 'EGYPT', '28/02/2026', 'Limited', '1.15E+11', 'Cash', 'اﻟﻮﺗﺪ', '1012306786', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(33, 32, 'A34731378', 'MOSTAFA MOHAMED ARABI ABDELHALIM', 'مصطفى محمد عربى عبدالحليم', '91', 'PRE APPROVAL FOR WORK PERMIT', 'Carpenter', 'نجار', 'EGYPT', '01-03-2026', 'Limited', '1.22E+11', 'Cash', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '22/02/1992', 34, 'Dubai', 'Category A', 'LSB', 2000.00, '784-1992-4661393-1', '203/2025/2475330', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(34, 33, 'A41520577', 'HASSAN GAMAL HASSAN SELIM', 'حسن جمال حسن سليم', '127', 'PRE APPROVAL FOR WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '28/02/2026', 'Limited', '1.01E+11', 'Cash', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '03/01/1994', 32, 'Dubai', 'Category A', 'LSB', 1500.00, '784-1994-8847217-8', '2023/2025/2469185', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(35, 34, 'A41306303', 'OTHMAN MOHAMED RASHAD OTHMAN ABDELROHMAN', 'عثمان محمد رشاد عثمان عبدالرحمن', '-', 'PRE APPROVAL FOR WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '01-03-2026', 'Limited', '1.02E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(36, 35, 'S0703905', 'SAMI SALEEM NEMER ELHAJ', 'سامى سليم نمر الحاج', '98', 'PRE APPROVAL FOR WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'JORDAN', '23/05/2026', 'Limited', '3.07E+11', 'Cash', 'اﻟﻮﺗﺪ', '542326790', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'HSB', 6000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(37, 36, 'A24006515', 'HAITHAM WAGDY MOHSEN ABDELMEGEID', 'هيثم وجدى محسن عبدالمجيد', '-', 'RENEW ELECTRONIC WORK PERMIT', 'Accounts Manager', 'مدير الحسابات', 'EGYPT', '08-11-2027', 'Limited', '1.01E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(38, 37, 'A39070960', 'MOHAMED MOHAMED ALI FARAG', 'محمد محمد على فرج', '25', 'RENEW ELECTRONIC WORK PERMIT', 'Blacksmith', 'حداد', 'EGYPT', '17/12/2026', 'Limited', '1.25E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '25/12/1983', 42, 'Dubai', 'Category A', 'LSB', 4000.00, '784-1983-2208249-0', '202/2022/2346779', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(39, 38, 'LR2030810', 'MOUAMAR YOUSSEF SALLOUM', 'معمر يوسف سلوم', '101', 'RENEW ELECTRONIC WORK PERMIT', 'Civil Engineer', 'مهندس مدني', 'LEBANON', '25/06/2026', 'Limited', '2.20E+11', 'Unknown', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '20/02/1976', 50, 'Dubai', 'Category A', 'LSB', 2500.00, '784-1976-1383622-6', '201/2026/2560059', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(40, 39, 'A26738171', 'YUSUF MOHAMED ELSAYED IBRAHIM', 'يوسف محمد السيد ابراهيم', '-', 'RENEW ELECTRONIC WORK PERMIT', 'Civil Engineer', 'مهندس مدني', 'EGYPT', '10-10-2026', 'Limited', '1.01E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(41, 40, 'A28370696', 'ABDELRAHIM ABDELRAHMAN YOUSSEF ABBAS', 'عبدالرحيم عبدالرحمن يوسف عباس', '7', 'RENEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '26/11/2027', 'Limited', '1.09E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '08/09/1990', 36, 'Dubai', 'Category A', 'HSB', 5000.00, '784-1990-8640479-7', '201/2021/2765037', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(42, 41, 'T2076980', 'MOHAMMAD FAIYAJ MOHAMMAD NIJAM', 'محمد فياض محمد نظام', '17', 'RENEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'INDIA', '26/11/2027', 'Limited', '1.00E+13', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '03/03/1988', 38, 'Dubai', 'Category A', 'LSB', 4000.00, '784-1988-7658884-3', '201/2021/2758598', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(43, 42, 'UW6798340', 'FATIHA ZINOUN', 'فتيحه زينون', '-', 'RENEW ELECTRONIC WORK PERMIT', 'Filing Clerk', 'كاتب ملفات', 'MOROCCO', '01-08-2026', 'Limited', '1.42E+12', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(44, 43, 'V8707481', 'HAMID MEHRAJ MEHRAJ UD DIN BHAT', 'حميد محراج محراج الدين بهات', '104', 'RENEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'INDIA', '19/12/2026', 'Limited', '1.00E+13', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '01/01/1989', 37, 'Dubai', 'Category A', 'HSB', 4800.00, '784-1989-6879206-3', '202/2022/2512033', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(45, 44, 'N015045301', 'HASSAN HAJAN AL HAMAD', 'حسن حاجان الحمد', '1', 'RENEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'SYRIA', '09-12-2027', 'Limited', '4.01E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '03/01/1981', 45, 'Dubai', 'Category A', 'LSB', 3000.00, '784-1994-7157188-7', '201/2023/2919357', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(46, 45, 'LR2193066', 'SALIM ABDEL NASSER SALLOUM', 'سليم عبدالناصر سلوم', '102', 'RENEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'LEBANON', '06-01-2028', 'Limited', '2.15E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '503594924', 'Male', 'Single', '15/11/1997', 29, 'Dubai', 'Category A', 'HSB', 8000.00, '784-1997-1120618-7', '201/20242018186', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(47, 46, 'A29500066', 'AHMED MOHAMED YOUSSEF ABBAS', 'احمد محمد يوسف عباس', '33', 'RENEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '06-11-2026', 'Limited', '1.21E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '543109055', 'Male', 'Single', '21/09/1997', 29, 'Dubai', 'Category A', 'LSB', 2700.00, '784-1997-1189733-2', '202/2022/2311014', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(48, 47, 'A33927845', 'AYMAN KAMAL SABET SHEHATA', 'ايمن كمال ثابت شحاته', '-', 'RENEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '08-10-2027', 'Limited', '1.26E+11', '', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '26/09/1999', 27, '', '', '', 0.00, '784-1999-9358897-1', '202/2023/2301885', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(49, 48, 'A34835763', 'IBRAHIM ABDOU MOHAMED IBRAHIM', 'ابراهيم عبده محمد ابراهيم', '37', 'RENEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '03-09-2027', 'Limited', '1.16E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(50, 49, 'A29369941', 'HAWARY BAKHIT SAYED BAKHIT', 'هوارى بخيت سيد بخيت', '8', 'RENEW ELECTRONIC WORK PERMIT', 'Stone Worker', 'عامل الصخر', 'EGYPT', '26/10/2026', 'Limited', '1.16E+11', 'Al Watad Foundation Contracting', 'اﻟﻮﺗﺪ', '', 'Male', 'Single', '16/05/1990', 36, 'Dubai', 'Category A', 'LSB', 2300.00, '784-1990-3294633-9', '202/2022/2263990', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(51, 50, 'A38957922', 'GAMAL MOHAMED FAWZY HASSAN MOHAMED ELABD', 'جمال محمد فوزى حسن محمد العبد', '75', 'NEW ELECTRONIC WORK PERMIT', 'Blacksmith', 'حداد', 'EGYPT', '21/10/2027', 'Limited', '1.27E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '27/01/2003', 23, 'Dubai', 'Category A', 'LSB', 2000.00, '784-2003-7566589-8', '202/2025/2728857', '', '', '', '', '0000-00-00 00:00:00', '2026-06-18 07:37:21', '', '', '', '', '', 'active', NULL, NULL, NULL),
+(52, 51, 'A42850391', 'SHAABAN NASRALLA TAWFIK ALY', 'شعبان نصرالله توفيق على', '80', 'NEW ELECTRONIC WORK PERMIT', 'Blacksmith', 'حداد', 'EGYPT', '30/10/2027', 'Limited', '1.09E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '06/09/1981', 45, 'Dubai', 'Category A', 'LSB', 1500.00, '784-1996-7055372-5', '202/2025/2848500', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(53, 52, 'A37831499', 'ABDALLA SHOBAK KHALLAF SAFA', 'عبدالله شوبك خلاف صفا', '62', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '15/09/2027', 'Limited', '1.03E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '03/03/1987', 39, 'Dubai', 'Category A', 'LSB', 2000.00, '784-', '202/2025/2676190', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(54, 53, 'A37259433', 'AHMED SALAH IBRAHIM MOHAMED', 'احمد صلاح ابراهيم محمد', '29', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '09-09-2026', 'Limited', '1.12E+11', 'Geofound pilling and foundation', 'جيوفوند ', '509589590', 'Male', 'Single', '09/12/2002', 24, 'Dubai', 'Category A', 'LSB', 1800.00, '784-2002-3049193-3', '202/2024/2338185', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(55, 54, 'A38637868', 'ALAA RASHAD BADRY HASSAN', 'علاء رشاد بدرى حسن', '-', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '18/09/2026', 'Limited', '1.16E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(56, 55, 'A42595416', 'AWAD ELSAYED AWAD ATTIA', 'عوض السيد عوض عطيه', '59', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '14/09/2027', 'Limited', '1.10E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '09/10/1982', 44, 'Dubai', 'Category A', 'LSB', 1800.00, '784-1982-5205090-5', '202/2025/2676188', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(57, 56, 'A42412348', 'ELSAIED ELSAYED ELSAIED MOHAMED', 'السعيد السيد السعيد محمد', '81', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '20/10/2027', 'Limited', '1.04E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(58, 57, 'A41636730', 'HAMDY EMAD HAMDY ALI', 'حمدى عماد حمدى على', '94', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '15/02/2028', 'Limited', '1.20E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '20/05/2003', 23, 'Dubai', 'Category A', 'LSB', 1500.00, '784-2003-5291479-8', '201/2026/2032642', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(59, 58, 'A43839858', 'MAHMOUD MOHAMED SEDIK HEGAZY', 'محمود محمد صديق حجازي', '87', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '07-01-2028', 'Limited', '1.05E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '04/05/1990', 36, 'Dubai', 'Category A', 'LSB', 3500.00, '784-1990-6655090-8', '202/2025/2889592', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(60, 59, 'C8799995', 'MOHAMMAD JABIR MOHAMMAD SAYEED', 'محمد جابر محمد سعيد', '60', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'INDIA', '15/09/2027', 'Limited', '1.00E+13', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '07/05/1997', 29, 'Dubai', 'Category A', 'LSB', 3000.00, '784-1991-7058090-8', '202/2025/2643514', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(61, 60, 'A41035487', 'MOSTAFA ELIWA KHALAF ELIWA', 'مصطفى عليوه خلف عليوه', '63', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '15/09/2027', 'Limited', '1.31E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '31/07/1990', 36, 'Dubai', 'Category A', 'LSB', 1800.00, '784-1990-7734600-7', '202/2025/2676189', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(62, 61, 'A40303076', 'WAEL ABDELZAHER ABDELAAL AHMED', 'وائل عبدالظاهر عبدالعال احمد', '-', 'NEW ELECTRONIC WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '09-11-2027', 'Limited', '1.15E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(63, 62, 'A37800723', 'MOHAMED SAMY AMER IBRAHIM AMER', 'محمد سامى عامر ابراهيم عامر', '-', 'NEW ELECTRONIC WORK PERMIT', 'Carpenter', 'نجار', 'EGYPT', '05-09-2026', 'Limited', '1.28E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(64, 63, 'A35681176', 'MOHAMED RAMADAN MEKHIMAR SHARAF', 'محمد رمضان مخيمر شرف', '106', 'NEW ELECTRONIC WORK PERMIT', 'Civil Engineer', 'مهندس مدني', 'EGYPT', '19/02/2027', 'Limited', '1.26E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(65, 64, 'A33873885', 'MOHAMED SAIED ALI KORAYEM', 'محمد سعيد على كريم', '110', 'NEW ELECTRONIC WORK PERMIT', 'Civil Engineer', 'مهندس مدني', 'EGYPT', '06-11-2027', 'Limited', '1.23E+11', 'Geofound pilling and foundation', 'جيوفوند ', '542998080', 'Male', 'Single', '23/08/1994', 32, 'Dubai', 'Category A', 'HSB', 11000.00, '784-1994-9662401-8', '203/2025/2360298', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(66, 65, 'A44306926', 'ALI MOHAMED ALI MAHMOUD', 'على محمد على محمود', '116', 'NEW ELECTRONIC WORK PERMIT', 'Civil Engineer / Labourer', 'عامل الهندسة المدنية', 'EGYPT', '20/01/2028', 'Limited', '1.01E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'HSB', 9000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(67, 66, 'A28988637', 'WALID AWNY BEBAWY GAD', 'وليد عونى بباوى جاد', '24', 'NEW ELECTRONIC WORK PERMIT', 'Construction / Carpenter', 'نجار البناء', 'EGYPT', '08-09-2026', 'Limited', '1.17E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '17/11/1988', 38, 'Dubai', 'Category A', 'LSB', 1650.00, '784-1988-9240187-2', '202/2024/2331430', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(68, 67, 'A38642778', 'MOHAMED SHAABAN THAALAB ABDELWAHAB', 'محمد شعبان ثعلب عبدالوهاب', '13', 'NEW ELECTRONIC WORK PERMIT', 'Drill Operator', 'عامل الحفر', 'EGYPT', '09-09-2026', 'Limited', '1.03E+11', 'Geofound pilling and foundation', 'جيوفوند ', '569114762', 'Male', 'Single', '09/03/2000', 26, 'Dubai', 'Category A', 'LSB', 1800.00, '784-2000-8771248-3', '202/2024/2337884', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(69, 68, 'AF007980', 'MEHARAB ALAM MOHAMMAD TAUHID ALAM', 'محراب علام محمد توحيد علام', '74', 'NEW ELECTRONIC WORK PERMIT', 'Electrician', 'كهربائي', 'INDIA', '22/09/2027', 'Limited', '1.00E+13', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '18/01/1989', 37, 'Dubai', 'Category A', 'LSB', 3000.00, '784-1989-9486281-5', '202/2025/2676011', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(70, 69, 'N015308797', 'MSHAL MOHAMAD ALHUSAIEH', 'مشعل محمد الحصيه', '5', 'NEW ELECTRONIC WORK PERMIT', 'Light Vehicle Driver', 'سائق مركبة خفيفة', 'SYRIA', '25/02/2027', 'Limited', '4.16E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '14/05/1995', 31, 'Dubai', 'Category A', 'LSB', 2500.00, '784-1995-8958776-7', '201/2025/2390378', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(71, 70, 'A32864845', 'ADEL HOSSNY ATITO SAADELDIN', 'عادل حسنى عطيتو سعد الدين', '38', 'NEW ELECTRONIC WORK PERMIT', 'Mechanic Assistant', 'مساعد الميكانيكي', 'EGYPT', '02-05-2026', 'Limited', '1.21E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '21/08/1979', 47, 'Dubai', 'Category A', 'LSB', 4000.00, '784-1979-5648804-9', '201/2024/2558054', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(72, 71, 'A38819664', 'AHMED MOHAMED AHMED MOHAMED', 'احمد محمد احمد محمد', '-', 'NEW ELECTRONIC WORK PERMIT', 'Mechanic Assistant', 'مساعد الميكانيكي', 'EGYPT', '18/09/2026', 'Limited', '1.10E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(73, 72, 'A37313905', 'HANI HOSNI ATTITO SAADELDIN MOHAMED', 'هانى حسنى عطيتو سعد الدين محمد', '34', 'NEW ELECTRONIC WORK PERMIT', 'Mechanic Assistant', 'مساعد الميكانيكي', 'EGYPT', '02-05-2026', 'Limited', '1.01E+11', 'Geofound pilling and foundation', 'جيوفوند ', '566480509', 'Male', 'Single', '12/01/1981', 45, 'Dubai', 'Category A', 'LSB', 4000.00, '784-1981-9241710-7', '201/2024/2558053', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(74, 73, 'A34262535', 'HASSAN ALI ELSAYED GOMAA', 'حسن على السيد جمعه', '21', 'NEW ELECTRONIC WORK PERMIT', 'Mechanic Assistant', 'مساعد الميكانيكي', 'EGYPT', '19/09/2026', 'Limited', '1.25E+11', 'Geofound pilling and foundation', 'جيوفوند ', '502719005', 'Male', 'Single', '25/05/2001', 25, 'Dubai', 'Category A', 'LSB', 2000.00, '784-2001-6147409-1', '202/2024/2379156', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(75, 74, 'A36942147', 'WALID BARBARY ABDELHAMID MOHAMED', 'وليد بربرى عبدالحميد محمد', '23', 'NEW ELECTRONIC WORK PERMIT', 'Mechanic Assistant', 'مساعد الميكانيكي', 'EGYPT', '21/09/2026', 'Limited', '1.20E+11', 'Geofound pilling and foundation', 'جيوفوند ', '1228019025', 'Male', 'Single', '20/03/1983', 43, 'Dubai', 'Category A', 'LSB', 2200.00, '784-1983-6375803-2', '202/2024/2378513', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(76, 75, 'A27162497', 'EMAN ISMAIL IBRAHIM KHALIL', 'ايمان اسماعيل ابراهيم خليل', '-', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '30/12/2026', 'Limited', '1.30E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(77, 76, 'A42580959', 'HASSAN MOHAMED HASSAN SALEH', 'حسن محمد حسن صالح', '76', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '06-10-2027', 'Limited', '1.01E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '11/01/1996', 30, 'Dubai', 'Category A', 'LSB', 3300.00, '784-1996-5001070-7', '202/2025/2889591', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(78, 77, 'LR3235849', 'NANCY YOUSSEF SALLOUM', 'نانسي يوسف سلوم', '-', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'LEBANON', '09-04-2028', 'Limited', '2.19E+11', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(79, 78, 'A43031473', 'YASSMIN ALI ELSAYED FARAGALLAH', 'ياسمين على السيد فرج الله', '113', 'NEW ELECTRONIC WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'EGYPT', '31/10/2027', 'Limited', '1.05E+11', 'Geofound pilling and foundation', 'جيوفوند ', '1104785576', 'Famale', 'Single', '08/05/2000', 26, 'Dubai', 'Category A', 'LSB', 4000.00, '784-2000-4190557-9', '202/2025/2689479', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(80, 79, 'A34210097', 'ELSAID MAHMOUD ATTIA MOHAMED ELAFIFI', 'السعيد محمود عطيه محمد العفيفى', '10', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '14/07/2026', 'Limited', '1.10E+11', 'Al Watad Foundation Contracting', 'جيوفوند ', '', 'Male', 'Single', '01/10/2003', 23, 'Dubai', 'Category A', 'LSB', 2100.00, '784-2003-7773594-7', '202/2024/2021449', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(81, 80, 'A38452359', 'MOHAMED SAYED MAHMOUD ALI', 'محمد سيد محمود على', '47', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '31/08/2026', 'Limited', '1.17E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '17/05/1986', 40, 'Dubai', 'Category A', 'LSB', 2300.00, '784-1986-7022437-1', '202/2024/2310926', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(82, 81, 'B8058111', 'PRIASH KUMAR SATYAVEER SINGH', 'برياش كومار ساتيافير سينغ', '61', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '14/09/2027', 'Limited', '1.00E+13', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(83, 82, 'A29577617', 'SAMIR ELGHITANY ABOUEL MAATY ELSHERBINY', 'سمير الغيطانى ابو المعاطى الشربينى', '18', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '24/07/2026', 'Limited', '1.03E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '09/03/1969', 57, 'Dubai', 'Category A', 'LSB', 2900.00, '784-1969-5294938-4', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(84, 83, 'S9156120', 'SHEESHNATH BHARDAWAJ ACHCHHELAL RAJBHAR', 'شيشناث باردواج أتشيلاال راجبهر', '54', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '04-09-2027', 'Limited', '1.00E+13', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '10/05/1992', 34, 'Dubai', 'Category A', 'LSB', 3000.00, '784-1992-3424638-9', '202/2025/2644395', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(85, 84, 'A25797931', 'TAHA MAHMOUD HUSSEIN AHMED', 'طه محمود حسين احمد', '14', 'NEW ELECTRONIC WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'EGYPT', '24/07/2026', 'Limited', '1.06E+11', 'Al Watad Foundation Contracting', 'جيوفوند ', '', 'Male', 'Single', '03/06/1980', 46, 'Dubai', 'Category A', 'LSB', 2400.00, '784-1980-7064046-5', '201/2024/2392850', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(86, 85, 'P09149990', 'HASSAN ELSIDDIG MOHAMED AHMED', 'حسن الصديق محمد احمد', '114', 'NEW ELECTRONIC WORK PERMIT', 'Telecommunication / Assistant', 'مساعد الاتصالات', 'SUDAN', '08-01-2028', 'Limited', '9.28E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '28/09/1995', 31, 'Dubai', 'Category A', 'LSB', 3000.00, '784-1995-8188982-3', '203/2025/2032839', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(87, 86, 'A29805951', 'MOHAMED ABDELAZIZ MAHMOUD AHMED', 'محمد عبدالعزيز محمود احمد', '27', 'NEW ELECTRONIC WORK PERMIT', 'Tile Layer', 'عامل تركيب البلاط', 'EGYPT', '08-09-2026', 'Limited', '1.01E+11', 'Geofound pilling and foundation', 'جيوفوند ', '', 'Male', 'Single', '09/01/1998', 28, 'Dubai', 'Category A', 'LSB', 1700.00, '784-2002-3049193-3', '202/2024/2310996', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(88, 87, 'A29374501', 'MAHMOUD MASRI MOHAMED HASSAN', 'محمود مصرى محمد حسن', '100', 'PRE APPROVAL FOR WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '05-04-2026', 'Limited', '1.10E+11', 'Cash', 'جيوفوند ', '', 'Male', 'Single', '12/01/1999', 27, 'Dubai', 'Category A', 'LSB', 1500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(89, 88, 'A42031485', 'RAMADAN AHMED MOHAMED AHMED ELKAZAZ', 'رمضان احمد محمد احمد القزاز', '92', 'PRE APPROVAL FOR WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '02-03-2026', 'Limited', '1.13E+11', 'Cash', 'جيوفوند ', '', 'Male', 'Single', '13/01/2004', 22, 'Dubai', 'Category A', 'LSB', 1500.00, '784-2004-7297828-5', '201/2026/2032642', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(90, 89, 'A44135808', 'YASSEIN KHALAF RAMADAN ABDELSAYED', 'ياسين خلف رمضان عبدالسيد', '97', 'PRE APPROVAL FOR WORK PERMIT', 'Building Labourer', 'عامل البناء', 'EGYPT', '18/03/2026', 'Limited', '1.17E+11', 'Cash', 'جيوفوند ', '', 'Male', 'Single', '17/04/2007', 19, 'Dubai', 'Category A', 'LSB', 1500.00, '784-2007-2039735-3', '201/2026/2129425', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(91, 90, 'P10204212', 'FARIS JAAFAR MOHAMMAD AHMED', 'فارس جعفر محمد احمد', '109', 'PRE APPROVAL FOR WORK PERMIT', 'Civil Engineer / Labourer', 'عامل الهندسة المدنية', 'SUDAN', '11-02-2026', 'Limited', '9.25E+11', 'Cash', 'جيوفوند ', '', 'Male', 'Single', '25/01/1994', 32, 'Dubai', 'Category A', 'LSB', 3500.00, '784-1994-7239722-5', '203/2025/2360298', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(92, 91, 'EQ1357816', 'NIZAMI AHIMED ABAZINAB', 'نظامى احمد ابازيناب', '-', 'PRE APPROVAL FOR WORK PERMIT', 'Sales Officer', 'موظف مبيعات', 'ATHYUOBYA', '14/03/2026', 'Limited', '4.03E+13', '', 'جيوفوند ', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(93, 92, 'T9264465', 'ISTIYAQUE ALAM MUMTAZ UDDIN', 'اشتياق عالم ممتاز الدين', '56', 'PRE APPROVAL FOR WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '05-09-2027', 'Limited', '1.00E+13', 'International Al Watad', 'الوتد انترناشونال', '9508056451', 'Male', 'Single', '05/03/1974', 52, 'Dubai', 'Category A', 'LSB', 3200.00, '784-1974-7821941-9', '101/2025/2/425068', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(94, 93, 'S8179985', 'ABDUL KADIR ABDUL KHALIK', 'عبدول قادر عبدول الخالق', '55', 'PRE APPROVAL FOR WORK PERMIT', 'Steel Fixer', 'عامل تثبيت الفولاذ', 'INDIA', '05-09-2027', 'Limited', '1.00E+13', 'International Al Watad', 'الوتد انترناشونال', '8051919165', 'Male', 'Single', '02/08/1980', 46, 'Dubai', 'Category A', 'LSB', 3200.00, '784-1980-6603397-2', '101/2025/2/425448', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(95, 94, '', 'Mohammed Attia Alkhair', 'محمد عطية الخير', '3', '', 'DRIVER', '', '', '', '', '', 'Alanaqa Aljamila Technical Services Est', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(96, 95, '', 'Omran Farhan Alsharida', 'عمران فرحان الشريدة', '4', '', 'DRIVER', '', '', '', '', '', 'Jazeerat Alghadeer Technical Services', 'غ مسجل', '568661724', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(97, 96, '', 'Fahed Abboud Alhamad', 'فهد عبود الحمد', '6', '', 'DRIVER', '', '', '', '', '', 'Alanaqa Aljamila Technical Services Est', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(98, 97, '', 'Ehab Abdullah Alsmadi', 'إيهاب عبد الله السمادي', '50', '', 'Foreman', '', '', '', '', '', 'Alfa General contracting', 'غ مسجل', '506229021', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(99, 98, '', 'Abdullah Almohammad', 'عبد الله المحمد', '71', '', 'OPERATOR', '', '', '', '', '', '', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(100, 99, '', 'Attia Mohamed Attia Salem', 'عطية محمد عطية سالم', '78', '', 'Assets-Acc', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2300.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(101, 100, '', 'Ahmed Khalfan', 'أحمد خلفان', '82', '', 'DRIVER', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(102, 101, '', 'Abd Elghafar Ali AbdElghafar', 'عبد الغفار علي عبد الغفار', '84', '', 'Surveyor', '', '', '', '', '', 'Cash', 'غ مسجل', '566741538', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 4000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(103, 102, '', 'Tarek AbdElfattah Ali', 'طارق عبد الفتاح علي', '85', '', 'DRIVER', '', '', '', '', '', '', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(104, 103, '', 'Mahmoud Bahgat Kamar', 'محمود بهجت قمر', '93', '', 'OPERATOR', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3800.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(105, 104, '', 'Mahmoud Attiah Eliwa', 'محمود عطية عليوة', '95', '', 'HELPER', '', '', '', '', '', '', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(106, 105, '', 'Ahmed Saied Fawzy', 'أحمد سعيد فوزي', '96', '', 'HELPER', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(107, 106, '', 'Ahmed Mohsen Haider', 'أحمد محسن حيدر', '99', '', 'Driver', '', '', '', '', '', '', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(108, 108, '', 'Narjes Baydoun', 'نرجس بيضون', '112', '', 'Design ENG', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(109, 109, '', 'Akrem Abdelgaym Ahmed Abdelgaym', 'اكرم عبد الجيم احمد عبد الجيم', '115', '', 'CIVIL ENG', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(110, 110, '', 'BASSEM GUIRGUIS MALIKA BADAWY', 'باسم جرجس ومليكة بدوي', '117', '', 'Electrician Eng', '', '', '', '', '', '', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'HSB', 7000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(111, 111, '', 'Mahmoud Ahmed Fathy Mahmoud', 'محمود أحمد فتحي محمود', '118', '', 'Office Assistant', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(112, 112, '', 'Mohamed Awady', 'محمد عوضي', '119', '', 'CIVIL ENG', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(113, 113, '', 'Ahmed AbulHassan Youssef', 'أحمد أبو الحسن يوسف', '120', '', 'Helper', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1800.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(114, 114, '', 'Mahmoud Youssef Badawy Sayed Ahmed', 'محمود يوسف بدوي سيد أحمد', '121', '', 'Helper', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1800.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL);
+INSERT INTO `employees` (`id`, `s_no`, `passport_no`, `name_en`, `name_ar`, `emp_id`, `permit_type`, `job_title_en`, `job_title_ar`, `nationality`, `expiry_date`, `contract_type`, `labour_card_no`, `company_name`, `company_code`, `phone_number`, `gender`, `marital_status`, `date_of_birth`, `age`, `visa_emirate`, `category`, `member_type`, `gross_salary`, `emirates_id_number`, `resident_file_number`, `contract_pdf`, `offer_letter_pdf`, `passport_pdf`, `resident_file_pdf`, `created_at`, `updated_at`, `photo`, `passport_expiry`, `visa_expiry`, `emirates_id_expiry`, `labour_card_expiry`, `employee_status`, `leaving_date`, `leaving_reason`, `deleted_at`) VALUES
+(115, 115, '', 'Mohamed Khalaf Allah Khalaf', 'محمد خلف الله خلف', '122', '', 'Helper', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1800.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(116, 116, '', 'Bashar Elsabaa Mohamed Metwally', 'بشار السبع محمد متولي', '123', '', 'Helper', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 1800.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(117, 117, '', 'Myriam Safwat', 'ميريام صفوت', '125', '', 'I.T', '', '', '', '', '', 'Cash', 'جيوفوند ', '', 'Famale', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(118, 118, '', 'Mostafa Kamal Shahin', 'مصطفى كمال شاهين', '126', '', 'Welder', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(119, 119, '', 'Ahmed Magdy', 'أحمد مجدي', '128', '', 'CIVIL ENG', '', '', '', '', '', 'Cash', 'غ مسجل', '509408406', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(120, 120, '', 'Muhammad Reyad Saad Younes', 'محمد رياض سعد يونس', '129', '', 'welder', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2600.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(121, 121, '', 'Mohamed Shaaban Mohamed Shaaban', 'محمد شعبان محمد شعبان', '130', '', 'OPERATOR', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 3000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '2026-06-18 06:06:49', '', NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(122, 122, '', 'Saleh Asaad Almohammed', 'صالح أسعد المحمد', '131', '', 'Driver', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 2500.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(123, 123, '', 'Ahmed Mohammed Mahmoud Mohammed', 'أحمد محمد محمود محمد', '132', '', 'Driver', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, '', '', '', 0.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, NULL),
+(124, 124, '', 'Mahmoud Saeed Mohammed Abdou', 'محمود سعيد محمد عبدو', '133', '', 'OPERATOR', '', '', '', '', '', 'Cash', 'غ مسجل', '', 'Male', 'Single', '', 126, 'Dubai', 'Category A', 'LSB', 4000.00, '', '', '', '', '', '', '0000-00-00 00:00:00', '2026-06-18 08:41:23', '', '', '', '', '', 'active', '', '', NULL),
+(126, NULL, 'الفبقي', 'فلقبسث', 'افلقبي', '200', '', 'الالبي', 'اللابري', 'للابريؤ', '', '', '', 'البيس', '', '', '', '', '', 0, '', '', '', 0.00, '', '', '', '', '', '', '2026-06-18 08:34:39', '2026-06-18 08:34:58', '', '', '', '', '', 'deleted', NULL, NULL, '2026-06-18 12:34:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_notes`
+--
+
+CREATE TABLE `employee_notes` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `note` text NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employee_notes`
+--
+
+INSERT INTO `employee_notes` (`id`, `employee_id`, `note`, `created_by`, `created_at`) VALUES
+(2, 124, 'نتالبريؤ', 1, '2026-06-18 10:16:47'),
+(3, 124, 'تعالب', 1, '2026-06-18 10:16:51'),
+(5, 124, 'سيبلا', 1, '2026-06-18 10:20:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leave_requests`
+--
+
+CREATE TABLE `leave_requests` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `leave_type` varchar(100) DEFAULT NULL,
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
+  `days_count` int(11) DEFAULT 0,
+  `reason` text DEFAULT NULL,
+  `status` varchar(30) DEFAULT 'pending',
+  `admin_note` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `payroll_month` varchar(20) NOT NULL,
+  `basic_salary` decimal(10,2) DEFAULT 0.00,
+  `allowances` decimal(10,2) DEFAULT 0.00,
+  `deductions` decimal(10,2) DEFAULT 0.00,
+  `advances` decimal(10,2) DEFAULT 0.00,
+  `net_salary` decimal(10,2) DEFAULT 0.00,
+  `status` varchar(30) DEFAULT 'draft',
+  `notes` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE `projects` (
+  `id` int(11) NOT NULL,
+  `project_name` varchar(255) NOT NULL,
+  `project_code` varchar(100) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `status` varchar(50) DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(50) DEFAULT 'admin',
+  `status` varchar(30) DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`, `created_at`) VALUES
+(1, 'Administrator', 'admin@alwatad.com', '123456', 'admin', 'active', '2026-06-18 06:32:51'),
+(6, 'Omar Salloum', 'omarsalloum@alwatad.com', '1234', 'manager', 'active', '2026-06-18 06:56:20');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `company_settings`
+--
+ALTER TABLE `company_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee_notes`
+--
+ALTER TABLE `employee_notes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `leave_requests`
+--
+ALTER TABLE `leave_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+
+--
+-- AUTO_INCREMENT for table `employee_notes`
+--
+ALTER TABLE `employee_notes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `leave_requests`
+--
+ALTER TABLE `leave_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
